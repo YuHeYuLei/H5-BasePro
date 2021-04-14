@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>授权</title>
+    <script src="generic/web/messenger.js"></script>
+    <script>
+      function getUrlParam (name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
+        var r = window.location.search.substr(1).match(reg)
+        if (r != null) return decodeURIComponent(r[2].replace(/%20/g, '+'))
+        return null
+      }
+      // 要求跳转过去的域名在企业下的某个应用配置过了，否则redirect_uri会报错 不能跳转至自动使用code的页面中否则会失效
+      let url = 'https://www.yuheyulei.com/YuHe/index.html#/setting'
+      let href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + getUrlParam('appid') + '&redirect_uri=' + encodeURIComponent(url) +
+        '&response_type=code&scope=snsapi_base&state=637408591796560755'
+      window.location.href = href
+    </script>
+</head>
+<body></body>
+<style>
+</style>
+</html>

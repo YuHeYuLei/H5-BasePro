@@ -1,0 +1,253 @@
+//https://less.bootcss.com/#%E6%A6%82%E8%A7%88
+//  广核色卡 移动端
+@colorRedT1: #c42929;
+@colorRedT2: #ce3333;
+@colorRedT3: #e94848;
+@colorOrangeT1: #df6213;
+@colorOrangeT2: #ed6c00;
+@colorOrangeT3: #e48810;
+@colorOrangeT4: #f7ab00;
+@colorYellow: #ffd900;
+@colorGreenT1: #487e1a;
+@colorGreenT2: #609819;
+@colorGreenT3: #8fc31f;
+@colorGreenT4: #dad900;
+@colorBlueT1: #102541;
+@colorBlueT2: #052b54;
+@colorBlueT3: #11315f;
+@colorBlueT4: #073f7a;
+@colorBlueT5: #004a86;
+@colorBlueT6: #0069ac;
+@colorBlueT7: #00aae8;
+@colorBlackT1: #333;
+@colorBlackT2: #666;
+@colorBlackT3: #999;
+@colorBlackT4: #ddd;
+@colorBlackT5: #f9f9f9;
+
+// 示例:深度控制
+//.home_mode_pice {
+//  /deep/ .van-grid-item__text {
+//    font-size: 10px;
+//    font-weight: 500;
+//    color: #000;
+//  }
+//}
+
+// 示例:混合使用
+//.bordered {
+//  border-top: dotted 1px black;
+//  border-bottom: solid 2px black;
+//}
+//#menu a {
+//  color: #111;
+//  .bordered();
+//}
+
+//示例:伪类
+//.clearfix {
+//  display: block;
+//  zoom: 1;
+//
+//  &:after {
+//    content: " ";
+//    display: block;
+//    font-size: 0;
+//    height: 0;
+//    clear: both;
+//    visibility: hidden;
+//  }
+//}
+
+//@ 规则（例如 @media 或 @supports）
+//示例:规则限定
+//@supports not (display: grid) {
+//  div {
+//    float: right;
+//  }
+//}
+
+//示例:规则嵌套
+//.component {
+//  width: 300px;
+//  @media (min-width: 768px) {
+//    width: 600px;
+//    @media  (min-resolution: 192dpi) {
+//      background-image: url(/img/retina2x.png);
+//    }
+//  }
+//  @media (min-width: 1280px) {
+//    width: 800px;
+//  }
+//}
+
+//示例:运算
+//所有操作数被转换成相同的单位
+//@conversion-1: 5cm + 10mm; // 结果是 6cm
+//@conversion-2: 2 - 3cm - 5mm; // 结果是 -1.5cm
+//@incompatible-units: 2 + 5px - 3cm; // 结果是 4px
+//@base: 5%;
+//@filler: @base * 2; // 结果是 10%
+//@other: @base + @filler; // 结果是 15%
+//@base: 2cm * 3mm; // 结果是 6cm
+//@color: #224488 / 2; //结果是 #112244
+//background-color: #112244 + #111; // 结果是 #223355
+
+//  手机
+@media screen and (max-width: 720px) and (min-width: 320px) {
+  .lessControlIsmobile {
+    display: block;
+  }
+
+  .lessControlIsPad {
+    display: none;
+  }
+
+  .lessControlIsPC {
+    display: none;
+  }
+}
+
+// 平板
+@media screen and (max-width: 992px) and (min-width: 720px) {
+  .lessControlIsmobile {
+    display: none;
+  }
+
+  .lessControlIsPad {
+    display: block;
+  }
+
+  .lessControlIsPC {
+    display: none;
+  }
+}
+
+// 大型平板 或 屏幕显示器
+@media screen and (min-width: 992px) {
+  .lessControlIsmobile {
+    display: none;
+  }
+
+  .lessControlIsPad {
+    display: none;
+  }
+
+  .lessControlIsPC {
+    display: block;
+  }
+}
+//标题栏控制
+.self_header {
+  width: 100%;
+  line-height: 44px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #0069ac;
+}
+
+.self_header_title {
+  width: calc(100% - 44px);
+  height: 44px;
+  padding-left: calc(50% - 22px);
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.self_not_header {
+  width: 100%;
+  margin-top: 44px;
+  height: calc(100vh - 44px);
+  //overflow: scroll;
+}
+
+.self_header_return {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  float: left;
+  text-align: center;
+}
+
+.fontSizeControl_return {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.isAPP {
+  // 沉浸式将状态栏覆盖
+  .self_header {
+    padding-top: 33px;
+    //height: 66px !important;
+  }
+  .self_not_header {
+    margin-top: 77px !important;
+    height: calc(100vh - 77px) !important;
+  }
+  .self_not_header {
+    .title_model {
+      /deep/ .van-cell.van-cell--clickable.van-collapse-item__title {
+        position: sticky;
+        top: 66px;
+        z-index: 99;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      /deep/ .van-cell.van-cell--clickable.van-collapse-item__title > .van-cell__title {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .title_InnerModel {
+        /deep/ .van-cell.van-cell--clickable.van-collapse-item__title {
+          position: sticky;
+          top: 66px;
+          z-index: 98;
+          border-bottom: 1px solid #e5e5e5;
+        }
+        /deep/ .van-cell.van-cell--clickable.van-collapse-item__title > .van-cell__title {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+// 粘性布局
+.title_model {
+  /deep/ .van-cell.van-cell--clickable.van-collapse-item__title {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+.self_not_header {
+  .title_model {
+    /deep/ .van-cell.van-cell--clickable.van-collapse-item__title {
+      position: sticky;
+      top: 44px;
+      z-index: 99;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    /deep/ .van-cell.van-cell--clickable.van-collapse-item__title > .van-cell__title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .title_InnerModel {
+      /deep/ .van-cell.van-cell--clickable.van-collapse-item__title {
+        position: sticky;
+        top: 44px;
+        z-index: 98;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      /deep/ .van-cell.van-cell--clickable.van-collapse-item__title > .van-cell__title {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}

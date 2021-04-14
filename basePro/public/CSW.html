@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div>检测到的ServerWorker列表</div>
+<div id="result"></div>
+<div id="todo" onclick="todo()">点击执行</div>
+<div id="return" onclick="returnToMian()">点击此处返回</div>
+<script type="text/javascript">
+  // 用于卸载所有的serverWorker
+  function todo () {
+    navigator.serviceWorker.getRegistrations()
+      .then(function (registrations) {
+        console.log(registrations)
+        let result = document.getElementById('result')
+        for (let registration of registrations) {
+          let divCell = document.createElement('div')
+          divCell.textContent = '共' + (registration + 1) + '个'
+          result.appendChild(divCell)
+          registration.unregister()
+        }
+      })
+  }
+  function returnToMian () {
+    location.href = './index.html'
+  }
+</script>
+</body>
+<style>
+    #todo {
+        width: 60%;
+        height: 66px;
+        background: #df5000;
+        color: #fff;
+        text-align: center;
+        line-height: 66px;
+        margin-left: 20%;
+        margin-top: 50%;
+    }
+    #return {
+        width: 60%;
+        height: 66px;
+        background: #0086b3;
+        color: #fff;
+        text-align: center;
+        line-height: 66px;
+        margin-left: 20%;
+        margin-top: 20%;
+    }
+</style>
+</html>
